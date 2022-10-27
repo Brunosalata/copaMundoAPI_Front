@@ -7,7 +7,7 @@ const db = getFirestore(app)
 
 function showConfet(id){
     const element = document.getElementById(id)
-    PerformanceEntry.confetti(element)
+    party.confetti(element)
 }
 
 function updateScore(id, br, other){
@@ -17,7 +17,17 @@ function updateScore(id, br, other){
 
 function throwGalvao(){
     const audio = new Audio('assets/audio/gol.mp3')
+    audio.playbackRate = 1.5
     audio.play()
+}
+
+function showEmoji() {
+    const emoji = documento.getElementById('emoji-gol')
+    emoji.classList.add('show')
+
+    setTimeout(() => {
+        emoji. classList.remove('show')
+    }, 4000)
 }
 
 onSnapshot(doc(db, "matches", "br-01"), (doc) => {
@@ -25,6 +35,7 @@ onSnapshot(doc(db, "matches", "br-01"), (doc) => {
 
     if(br > 0) {
         showConfet('br-01')
+        throwGalvao()
     }
 })
 
